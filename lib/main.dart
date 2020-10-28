@@ -1,22 +1,43 @@
 import 'package:flutter/material.dart';
+import './questao.dart';
+import './resposta.dart';
 
 main() => runApp(PerguntaApp());
 
-class PerguntasAppState extends State<PerguntaApp> {
-  var perguntaSelecionada = 0;
+class _PerguntasAppState extends State<PerguntaApp> {
+  var _perguntaSelecionada = 0;
 
-  void responder() {
-    setState(() {
-      perguntaSelecionada++;
-    });
-    print(perguntaSelecionada);
+  final _perguntas = const [
+    {
+      'texto': 'Qual é a sua cor favorita?',
+      'respostas': ['Preto', 'vermelhor', 'Verde', 'Branco']
+    },
+    {
+      'texto': 'Qual é o seu animal favorito?',
+      'respostas': ['Cachorro', 'Gato', 'Peixe', 'Papagaio']
+    },
+    {
+      'texto': 'Qual é sua estação do ano favorita?',
+      'respostas': ['Verão', 'Outono', 'Inverno', 'Verão']
+    },
+  ];
+
+  void _responder() {
+    if (temPerguntaSelecionada) {
+      setState(() {
+        _perguntaSelecionada++;
+      });
+    }
+  }
+
+  bool get temPerguntaSelecionada {
+    return _perguntaSelecionada < _perguntas.length;
   }
 
   Widget build(BuildContext context) {
-    final perguntas = [
-      'Qual é a sua cor favorita?',
-      'Qual é o seu animal favorito?',
-    ];
+    List<String> respostas = temPerguntaSelecionada
+        ? _perguntas[_perguntaSelecionada]['respostas']
+        : null;
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -24,14 +45,19 @@ class PerguntasAppState extends State<PerguntaApp> {
         appBar: AppBar(
           title: Center(child: Text('Perguntas')),
         ),
-        body: Column(
-          children: <Widget>[
-            Text(perguntas[perguntaSelecionada]),
-            RaisedButton(child: Text('Resposta 01'), onPressed: responder),
-            RaisedButton(child: Text('Resposta 02'), onPressed: responder),
-            RaisedButton(child: Text('Resposta 03'), onPressed: responder),
-          ],
-        ),
+        body: temPerguntaSelecionada
+            ? Column(
+                children: <Widget>[
+                  Questao(_perguntas[_perguntaSelecionada]['texto']),
+                  ...respostas.map((t) => Resposta(t, _responder)).toList(),
+                ],
+              )
+            : Center(
+                child: Text(
+                  'Parabéns',
+                  style: TextStyle(fontSize: 28),
+                ),
+              ),
       ),
     );
   }
@@ -39,7 +65,7 @@ class PerguntasAppState extends State<PerguntaApp> {
 
 class PerguntaApp extends StatefulWidget {
   @override
-  PerguntasAppState createState() {
-    return PerguntasAppState();
+  _PerguntasAppState createState() {
+    return _PerguntasAppState();
   }
 }
