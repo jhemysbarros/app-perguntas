@@ -1,16 +1,19 @@
-# projeto_perguntas
+# Quiz com pontuação
 
-A new Flutter application.
+Essa aplicação foi desenvolvida afim de treinar conhecimento do framework Flutter usando a linguagem Dart. O aplicativo contém 3 perguntas com 4 opções de respostas, e no final tem uma tela que informa o resultado e fornece a opção de reiniciar o Quiz.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Todos os requisitos para executar esse projeto pode ser acompanhado pelo próprio site do framework:
 
-A few resources to get you started if this is your first Flutter project:
+- [Get started - Install](https://flutter.dev/docs/get-started/install)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Snapshots do App
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Primeira pergunta](https://github.com/jhemysbarros/projeto-perguntas/blob/master/snapshots/pergunta1.png)
+
+![Primeira pergunta](https://github.com/jhemysbarros/projeto-perguntas/blob/master/snapshots/pergunta2.png)
+
+![Primeira pergunta](https://github.com/jhemysbarros/projeto-perguntas/blob/master/snapshots/pergunta3.png)
+
+![Resultado do Quiz](https://github.com/jhemysbarros/projeto-perguntas/blob/master/snapshots/resultado.png)
